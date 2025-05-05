@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>UI với nền động</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #f5f5f5;
+      z-index: -1;
+    }
+
+    .container {
+      position: relative;
+      background: white;
+      border-radius: 20px;
+      padding: 30px 25px;
+      width: 300px;
+      border: 2px solid #ff4d4d;
+      box-shadow: 0 0 10px #ff4d4d, 0 0 20px rgba(255, 77, 77, 0.5);
+      margin: auto;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .status-dot {
+      height: 10px;
+      width: 10px;
+      background-color: green;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 8px;
+    }
+
+    .time {
+      font-weight: bold;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      margin: 8px 0;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    input[type="radio"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+    }
+
+    .footer {
+      font-size: 12px;
+      text-align: center;
+      margin-top: 20px;
+      color: gray;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <!-- Nền động -->
+  <div id="particles-js"></div>
+
+  <!-- Giao diện chính -->
+  <div class="container">
+    <div class="status">
+      <span class="status-dot"></span> Trạng thái: Online
+    </div>
+    <div class="time" id="clock">Thời gian: --:--:--</div>
+
+    <!-- Các lựa chọn -->
+    <label><input type="radio" name="config"> | Giảm Thiểu Rung Tâm |</label>
+    <label><input type="radio" name="config"> | Fix Lag Máy |</label>
+    <label><input type="radio" name="config"> | Buff Fps Game |</label>
+    <label><input type="radio" name="config"> | Aimlock Gamer 85% |</label>
+    <label><input type="radio" name="config"> | Dipi Nhạy |</label>
+    <label><input type="radio" name="config"> | Head Lock Mods |</label>
+    <label><input type="radio" name="config"> | Player Head |</label>
+
+    <div class="footer">Make by MTU</div>
+  </div>
+
+  <!-- Đồng hồ -->
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString('vi-VN');
+      document.getElementById("clock").innerText = "Thời gian: " + timeStr;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
+  <!-- Nền động particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 50 },
+        "color": { "value": "#ff0000" },
+        "shape": {
+          "type": "line",
+          "stroke": { "width": 1, "color": "#ff0000" }
+        },
+        "opacity": { "value": 0.3 },
+        "size": { "value": 1 },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ff0000",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 1,
+          "direction": "none",
+          "out_mode": "bounce"
+        }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": false },
+          "onclick": { "enable": false }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
+</body>
+</html>
